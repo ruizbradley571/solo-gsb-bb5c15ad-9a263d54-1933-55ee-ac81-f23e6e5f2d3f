@@ -81,6 +81,28 @@ export function parseCidrStrict(raw: string): ParsedCidr {
 }
 
 /**
+ * 严格解析点分十进制 IPv4 地址（流量样本等场景的具体地址，非 CIDR）。
+ * 与 parseCidrStrict 同样拒绝缩写写法（ipaddr.js 会把 10.0.0 当作 10.0.0.0），
+ * 要求严格的四段十进制；返回 uint32 与规范化文本（去掉前导零）。
+ */
+export function parseIpv4Strict(raw: string): { ip: number; canonical: string } {
+  const text = raw.trim()
+  const octets = text.split('.')
+  if (
+    octets.length !== 4 ||
+    !octets.every((o) => /^\d+$/.test(o) && Number(o) <= 255)
+  ) {
+    throw new Error('IP 地址必须为点分十进制四段，每段 0-255')
+  }
+  const ip =
+    ((Number(octets[0]) << 24) >>> 0) +
+    (Number(octets[1]) << 16) +
+    (Number(octets[2]) << 8) +
+    Number(octets[3])
+  return { ip, canonical: intToIpv4(ip) }
+}
+
+/**
  * 若 ip 是给定块中取第 offset 个地址（offset 可为负，-1 表示最后一个）。
  */
 export function ipInBlock(blockStart: number, blockSize: number, offset: number): number {

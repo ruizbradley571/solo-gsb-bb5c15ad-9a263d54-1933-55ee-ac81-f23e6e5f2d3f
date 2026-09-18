@@ -923,3 +923,29 @@ button.primary.danger:hover {
 .regression-goals-entry {
   margin-top: 14px;
 }
+
+/* ---- 流量样本归因 ---- */
+.attribution-panel h2 {
+  font-size: 15px;
+}
+
+.attribution-panel textarea {
+  min-height: 150px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  resize: vertical;
+  margin: 12px 0 10px;
+}
+
+.attribution-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.attribution-sample-id {
+  font-weight: 600;
+  word-break: break-all;
+}

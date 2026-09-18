@@ -4,6 +4,7 @@ import { AuditResults } from './AuditResults'
 import { GoalVerify } from './GoalVerify'
 import { SimplifyPanel } from './SimplifyPanel'
 import { RegressionPanel } from './RegressionPanel'
+import { AttributionPanel } from './AttributionPanel'
 import { ImportModal, ExportModal } from './Modals'
 import { ReorderPreviewModal } from './ReorderPreviewModal'
 import { audit, exportReport, newRuleInput, parseRulesJson } from './audit/engine'
@@ -176,6 +177,10 @@ export default function App() {
 
       <div className="section-gap">
         <RegressionPanel rules={rules} />
+      </div>
+
+      <div className="section-gap">
+        <AttributionPanel rules={rules} />
       </div>
 
       <div className="section-gap">
