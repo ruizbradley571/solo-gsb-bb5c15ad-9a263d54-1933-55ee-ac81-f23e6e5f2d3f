@@ -4,6 +4,7 @@ import { AuditResults } from './AuditResults'
 import { GoalVerify } from './GoalVerify'
 import { SimplifyPanel } from './SimplifyPanel'
 import { RegressionPanel } from './RegressionPanel'
+import { TrafficAttributionPanel } from './TrafficAttributionPanel'
 import { ImportModal, ExportModal } from './Modals'
 import { ReorderPreviewModal } from './ReorderPreviewModal'
 import { audit, exportReport, newRuleInput, parseRulesJson } from './audit/engine'
@@ -176,6 +177,10 @@ export default function App() {
 
       <div className="section-gap">
         <RegressionPanel rules={rules} />
+      </div>
+
+      <div className="section-gap">
+        <TrafficAttributionPanel rules={rules} />
       </div>
 
       <div className="section-gap">
